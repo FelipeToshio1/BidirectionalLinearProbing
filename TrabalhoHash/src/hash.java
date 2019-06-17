@@ -10,25 +10,43 @@ public class hash {
     public void insert(){
         
         int position = key % hashmapSize;
-        int nextPosition = position;
         
-        if(hashmap[position] == key){
-            
+        if(hashmap[position] == null){
+            hashmap[position] = position;
         }
         else{
-            hashmap[nextPosition] = position;
+            nextPosition(position, increment);
+        }
+    }
+
+    public int nextPosition(int position, int increment){
+
+        int newPosition = position + increment * cont * Math.pow(-1, cont);
+
+        cont++;
+
+        if(hashmap[newPosition] == null){
+            hashmap[newPosition] = newPosition;
+        }
+        else{
+            nextPosition(position,increment)
         }
     }
     
-    public void searchPosition(int increment, int position, int hashmapSize){
-       int i;
-       newPosition = position + increment * i * Math.pow(-1, c);
-       i++;
-       if(newPosition == null){
-           hashmap[position] = newPosition;
+    public int searchPosition(int position, int increment){
+
+       int search = position;
+
+       int comparator = position + increment * cont * Math.pow(-1, cont);
+
+       cont++;
+
+       if(search == hashmap[comparator]){
+           return search;
        }
        else{
-           searchPosition(increment, position, hashmapSize);
+           searchPosition(position, increment);
        }
     }
+
 }
