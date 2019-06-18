@@ -1,5 +1,4 @@
 package src;
-import src.Hash.HashFunctions;
 import java.util.Scanner;
 
 public class Main {
