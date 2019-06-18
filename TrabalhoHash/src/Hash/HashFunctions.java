@@ -1,13 +1,20 @@
-public class Hash {
+package src.Hash;
 
+public class HashFunctions {
+
+    private int hashmapSize;
     private Integer[] hashmap;
     private int increment;
     private int cont;
-    private int key;
 
+    public HashFunctions( int hashmapSize, int increment){
+        this.hashmapSize = hashmapSize;
+        this.increment = increment;
+
+    }
     public void insert(int key) {
 
-        int position = key % hashmap.length;
+        int position = key % hashmapSize;
 
         if (hashmap[position] == 0) {
             hashmap[position] = position;

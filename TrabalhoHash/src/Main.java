@@ -1,6 +1,6 @@
-
+package src;
+import src.Hash.HashFunctions;
 import java.util.Scanner;
-
 
 public class Main {
 
@@ -12,38 +12,38 @@ public class Main {
         int key;
         int menu = 0;
 
-        Scanner ler = new Scanner(System.in);
-        System.out.printf("Informe o tamanho do mapa: ");
-        hashmapSize = ler.nextInt();
-        System.out.printf("Informe o imcremento: ");
-        increment = ler.nextInt();
-        Hash hash = new Hash();
+        Scanner read = new Scanner(System.in);
+        System.out.printf("Write the map size:");
+        hashmapSize = read.nextInt();
+        System.out.printf("Write the increment ");
+        increment = read.nextInt();
+        HashFunctions hash = new HashFunctions(hashmapSize,increment);
         System.out.printf("\n**************Menu**************");
-        System.out.printf("\n2 - Inserir key");
-        System.out.printf("\n3 - Buscar key");
-        System.out.printf("\n4 - Remover key");
-        System.out.printf("\n5 - Imprimir mapa");
+        System.out.printf("\n2 - Insert key");
+        System.out.printf("\n3 - Search key");
+        System.out.printf("\n4 - Remove key");
+        System.out.printf("\n5 - Print map");
         System.out.printf("\n********************************");
         while (menu != 1) {
-            System.out.printf("\nInforme a operação: ");
-            menu = ler.nextInt();
+            System.out.printf("\n Choose the operation: ");
+            menu = read.nextInt();
             if (menu == 2) {
-                System.out.printf("\nInforme uma key para ser inserida: ");
-                key = ler.nextInt();
+                System.out.printf("\n Which key should be inserted? ");
+                key = read.nextInt();
                 hash.insert(key);
             }
             if (menu == 3) {
-                System.out.printf("\nInforme uma key para ser buscada: ");
-                key = ler.nextInt();
-                if(hash.buscaChave(key) == null){
-                    System.out.println("\nChave nao encontrada!");
+                    System.out.printf("\n Which key should be searched? ");
+                key = read.nextInt();
+                if(hash.searchPosition(key,increment) == 0){
+                    System.out.println("\n The key can't be found!");
                 }else{
-                    System.out.println("\nChave na posição "+ hash.buscaChave(key) +".");
+                    System.out.println("\n The key position is:  "+ hash.searchPosition(key,increment) +".");
                 }
             }
             if (menu == 4) {
-                System.out.printf("\nInforme uma key para removida: ");
-                key = ler.nextInt();
+                System.out.printf("\n Choose a key to be removed: ");
+                key = read.nextInt();
                 /*if(hash.buscaChave(key) == null){
                     System.out.println("\nChave nao encontrada!");
                 }else{
@@ -51,14 +51,14 @@ public class Main {
                     System.out.println("\nChave removida ");
                 }*/
             }
-            if (menu == 5) {
-                Object mapa[] = hash.getMapa();
-                for (int i = 0; i < mapa.length; i++) {
-                    //System.out.println("");
-                    System.out.println(i + "-->" + mapa[i]);
-                }
-                
-            }
+//            if (menu == 5) {
+//                Object mapa[] = hash.getMapa();
+//                for (int i = 0; i < mapa.length; i++) {
+//                    //System.out.println("");
+//                    System.out.println(i + "-->" + mapa[i]);
+//                }
+//
+//            }
 
         }
 
