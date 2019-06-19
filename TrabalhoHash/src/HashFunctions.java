@@ -6,7 +6,6 @@ public class HashFunctions {
 
     public int hashmapSize;
     private int increment;
-    private int cont;
 
     public HashFunctions(int hashmapSize, int increment) {
         this.hashmapSize = hashmapSize;
