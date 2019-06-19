@@ -140,11 +140,13 @@ public class HashFunctions {
             int hash = hashmap.get(comparator) % hashmapSize;
 
             if (hash - comparator != 0) {
+                int lastHash = lastKey % hashmapSize;
                 int distance = hash - comparator;
-                int lastDistance = lastEmpty - comparator;
+                int lastDistance = lastHash - lastEmpty;
                 int distanceDifference = Math.abs(distance) - Math.abs(lastDistance);
                 if (distanceDifference > 0 || (distanceDifference == 0 && lastDistance < 1)) {
                     hashmap.set(lastEmpty, hashmap.get(comparator));
+                    lastKey = hashmap.get(comparator);
                     hashmap.set(comparator, null);
                     lastEmpty = comparator;
                 }
@@ -159,11 +161,13 @@ public class HashFunctions {
             hash = hashmap.get(comparator) % hashmapSize;
 
             if (hash - comparator != 0) {
+                int lastHash = lastKey % hashmapSize;
                 int distance = hash - comparator;
-                int lastDistance = lastEmpty - comparator;
+                int lastDistance = lastHash - lastEmpty;
                 int distanceDifference = Math.abs(distance) - Math.abs(lastDistance);
                 if (distanceDifference > 0 || (distanceDifference == 0 && lastDistance < 1)) {
                     hashmap.set(lastEmpty, hashmap.get(comparator));
+                    lastKey = hashmap.get(comparator);
                     hashmap.set(comparator, null);
                     lastEmpty = comparator;
                 }
